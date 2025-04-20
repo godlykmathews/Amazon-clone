@@ -1,3 +1,25 @@
+// Loading Overlay
+document.addEventListener('DOMContentLoaded', function() {
+  // Show loading overlay for a minimum of 2 seconds
+  setTimeout(function() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
+    // Check if all images and resources are loaded
+    if (document.readyState === 'complete') {
+      hideLoadingOverlay();
+    } else {
+      window.addEventListener('load', hideLoadingOverlay);
+    }
+    
+    function hideLoadingOverlay() {
+      loadingOverlay.style.opacity = '0';
+      setTimeout(function() {
+        loadingOverlay.style.visibility = 'hidden';
+      }, 500);
+    }
+  }, 2000);
+});
+
 // Data
 const banners = [
   {
